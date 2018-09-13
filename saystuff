@@ -1,17 +1,11 @@
 #!/bin/bash
 
 VOICECOUNT=`say -v ? |wc -l`
-declare -a COMMANDS
 for var in "$@"
 do
     WHICH_VOICE=`jot -r 1 1 ${VOICECOUNT}`
     VOICE=`say -v ?|cut -f 1 -d ' '|sort -R|head -${WHICH_VOICE} |tail -1`
     SPEED=`jot -r 1 1 100`
     BASE=`jot -r 1 1 100`
-    COMMANDS+="say -v $VOICE -r $SPEED \"[[pbas $BASE]] ${var}\";"
+    `say -v $VOICE -r $SPEED "[[pbas $BASE]] ${var}"`
 done
-
-echo "Running:"
-echo $COMMANDS
-echo 
-exec $COMMANDS
