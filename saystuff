@@ -1,0 +1,12 @@
+#!/bin/bash
+
+declare -a COMMANDS
+for var in "$@"
+do
+    VOICE=`say -v ?|cut -f 1 -d ' '|sort -R|head -1`
+    SPEED=`seq 1 20 | sort -R | head -n 1`
+    BASE=`seq 1 100 | sort -R | head -n 1`
+    set -x
+    say -v $VOICE -r $SPEED "[[pbas ${BASE}]] ${var}'"
+    set +x
+done
