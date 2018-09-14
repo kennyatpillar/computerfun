@@ -4,7 +4,7 @@ VOICECOUNT=`say -v ? |wc -l`
 for var in "$@"
 do
     WHICH_VOICE=`jot -r 1 1 ${VOICECOUNT}`
-    VOICE=`say -v ?|cut -f 1 -d ' '|sort -R|head -${WHICH_VOICE} |tail -1`
+    VOICE=`say -v ?|cut -f 1 -d ' '|head -${WHICH_VOICE} |tail -1`
     SPEED=`jot -r 1 1 100`
     BASE=`jot -r 1 1 100`
     `say -v $VOICE -r $SPEED "[[pbas $BASE]] ${var}"`
